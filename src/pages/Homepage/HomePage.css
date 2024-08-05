@@ -1,0 +1,222 @@
+#body {
+    font-family: 'katibeh', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+#body  #presentation {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    height: 200px;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+    position: relative;
+}
+
+#body .text-content {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#body  h1 {
+    font-size: 25px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#body h3 {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+#body .search-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;  
+    margin: 20px 0;
+}
+
+#body .input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ea8463;
+    border-radius: 25px;
+    font-size: 18px;
+    font-family: 'katibeh', cursive;
+}
+
+#body .search-icon {
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8E8989;
+}
+
+#body .section-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+    margin: 40px 0;
+}
+
+#body .category-title {
+    margin-top: 40px; 
+    margin-left: 60px;
+}
+
+#body .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; 
+    justify-content: center; 
+    padding: 20px; 
+}
+
+#body .category {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+    max-width: 150px; 
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#body .category:hover {
+    transform: scale(1.1);
+}
+
+#body .category-image {
+    width: 100px;
+    height: 100px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid #ddd; 
+    margin-bottom: 10px; 
+}
+
+#body .category h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: black;
+}
+
+#body .all-products {
+    padding: 20px;
+}
+
+#body .products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacement entre les produits */
+}
+
+#body .product {
+    background-color: #fff; 
+    border: none;
+    border-radius: 8px; /* Coins arrondis */
+    overflow: hidden;
+    width: 180px;
+    height: 300px;
+    margin-right: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative; /* Nécessaire pour le positionnement du bouton */
+    text-align: left; /* Alignement du texte à gauche */
+    padding: 10px; /* Espacement interne pour mieux organiser le contenu */
+}
+
+#body .product:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée au survol */
+    transform: translateY(-5px); /* Léger déplacement vers le haut */
+}
+
+#body .product-image-container {
+    height: 65%;
+    width: 100%;
+    position: relative; /* Pour la position absolue du cœur */
+}
+
+#body .product-image {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover; /* Assure que l'image garde son aspect */
+}
+
+#body .product-like-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #D36A46; /* Ajustez la couleur du cœur si nécessaire */
+    cursor: pointer;
+}
+
+#body .product h4 {
+    margin: 5px 0; /* Réduction des marges autour du texte */
+    font-size: 14px; /* Taille de texte réduite */
+}
+
+#body .product-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espacement entre le prix et l'icône */
+    margin: 10px 0;
+}
+
+#body .more-info-btn {
+    background-color: #D36A46;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px; /* Positionné en bas de la carte produit */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center; /* Centrage du texte */
+    transition: background-color 0.3s ease;
+    width: calc(100% - 20px); /* Ajuster la largeur pour l'espacement */
+}
+
+#body .more-info-btn:hover {
+    background-color: #B35639; /* Couleur plus foncée au survol */
+}
+
+#body .like-icon-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Cache l'icône par défaut */
+    transition: opacity 0.3s ease;
+  }
+  
+  #body  .product:hover .like-icon-container {
+    opacity: 1; /* Affiche l'icône au survol */
+  }
+  
+  #body  .product-like-icon {
+    color: #D36A46; /* Couleur du cœur */
+    font-size: 18px;
+  }
+
+  

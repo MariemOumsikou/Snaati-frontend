@@ -1,0 +1,243 @@
+
+.language-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    width: 100%; /* Assurez-vous que le conteneur prend toute la largeur disponible */
+}
+
+.language-selector .faGlobe {
+    cursor: pointer;
+    font-size: 18px; /* Ajustez la taille si nécessaire */
+    color: #333;
+    margin: 0;
+    margin-top: 40px;
+    display: inline-block;
+    z-index: 10; /* Assurez-vous que l'icône est au-dessus des autres éléments */
+}
+
+.languages {
+    position: absolute;
+    top: 30px; /* Ajustez la position si nécessaire */
+    left: 0; /* Assurez-vous que le menu se positionne correctement */
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 150px; /* Ajustez la largeur pour s'adapter au contenu */
+    z-index: 9; /* Assurez-vous que le menu est sous l'icône */
+}
+
+.language-button {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Katibeh', cursive;
+    font-size: 14px;
+    width: 100%;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.language-button:hover {
+    background-color: #f0f0f0;
+}
+
+
+#connexion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    font-family: 'Katibeh', cursive;
+}
+
+#bienvenue {
+    background-color: #D36A46;
+    height: 100%;
+    width: 50%;
+    font-family: 'Katibeh', cursive;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#formulaire {
+    background-color: white;
+    height: 100%;
+    width: 50%;
+    font-family: 'Katibeh', cursive;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#bienvenue h2 {
+    font-size: 30px; /* Réduit la taille du titre */
+    color: white;
+    margin: 0 0 10px 0; /* Réduit les marges */
+}
+
+#bienvenue p {
+    font-size: 16px; /* Réduit la taille du texte */
+    color: white;
+    margin-bottom: 10px; /* Réduit la marge */
+    text-align: center;
+}
+
+#inscription {
+    font-size: 16px; /* Réduit la taille de la police */
+    font-family: 'Katibeh', cursive;
+    height: 30px; /* Réduit la hauteur */
+    width: 120px; /* Réduit la largeur */
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 20px; /* Réduit les coins arrondis */
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#inscription:hover {
+    background-color: antiquewhite;
+    transform: scale(1.05); /* Réduit le scale effect */
+}
+
+.inscription-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px; /* Réduit la marge supérieure */
+}
+
+.option-button {
+    font-size: 16px; /* Réduit la taille de la police */
+    font-family: 'Katibeh', cursive;
+    height: 35px; /* Réduit la hauteur */
+    width: 100px; /* Réduit la largeur */
+    color: black;
+    background-color: white;
+    border: 1px solid #D36A46;
+    border-radius: 15px; /* Réduit les coins arrondis */
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 5px; /* Réduit la marge inférieure */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: #D36A46;
+    color: white;
+    transform: scale(1.05); /* Réduit le scale effect */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%; /* Réduit la largeur */
+    max-width: 350px; /* Réduit la largeur maximale */
+}
+
+.form-item {
+    font-size: 16px; /* Réduit la taille de la police */
+    font-family: 'Katibeh', cursive;
+    color: #333;
+    margin-bottom: 8px; /* Réduit la marge inférieure */
+    text-align: left;
+    width: 100%;
+}
+
+.info {
+    width: 100%;
+    padding: 8px; /* Réduit le padding */
+    margin-bottom: 8px; /* Réduit la marge inférieure */
+    box-sizing: border-box;
+    border: 1px solid #ccc; /* Réduit l'épaisseur de la bordure */
+    border-radius: 4px;
+    font-family: 'Katibeh', cursive;
+    font-size: 14px; /* Réduit la taille de la police */
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info:focus {
+    border-color: #D36A46;
+    outline: none;
+    box-shadow: 0 0 3px rgba(211, 106, 70, 0.5); /* Réduit l'ombre */
+}
+
+select.info {
+    height: 30px; /* Réduit la hauteur */
+    background-color: white;
+    cursor: pointer;
+}
+
+.faGlobe {
+    margin-top: 5px; /* Réduit la marge supérieure */
+    margin-bottom: 10px; /* Réduit la marge inférieure */
+}
+
+.faGlobe:hover {
+    color: #D36A46;
+    transform: scale(1.05); /* Réduit le scale effect */
+}
+
+#connexion-btn, #next {
+    color: white;
+    font-size: 16px; /* Réduit la taille de la police */
+    font-family: 'Katibeh', cursive;
+    height: 25px; /* Réduit la hauteur */
+    width: 100px; /* Réduit la largeur */
+    background-color: #D36A46;
+    border-radius: 20px; /* Réduit les coins arrondis */
+    border: none;
+    margin-top: 5px; /* Réduit la marge supérieure */
+    cursor: pointer;
+    align-content: center;
+}
+
+#connexion-btn:hover {
+    background-color: #C05B3A;
+}
+
+#msg {
+    margin: 5px; /* Réduit la marge */
+}
+
+#msg:hover {
+    text-decoration: underline;
+    transform: scale(1.05); /* Réduit le scale effect */
+}
+
+#conn-btn {
+    background-color: #D36A46;
+    color: white;
+    font-size: 16px; /* Réduit la taille de la police */
+    font-family: 'Katibeh', cursive;
+    border: none;
+    border-radius: 20px; /* Réduit les coins arrondis */
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#conn-btn:hover {
+    color: #C05B3A;
+}

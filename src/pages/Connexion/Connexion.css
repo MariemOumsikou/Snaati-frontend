@@ -1,0 +1,231 @@
+.language-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.language-selector .faGlobe {
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+}
+
+.languages {
+    position: absolute;
+    top: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.language-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Katibeh', cursive;
+    font-size: 16px;
+    width: 100%;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.language-button:hover {
+    background-color: #f0f0f0;
+}
+
+#connexion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    font-family: 'Katibeh', cursive;
+}
+
+#bienvenue {
+    background-color: #D36A46;
+    height: 100%;
+    width: 50%;
+    font-family: 'Katibeh', cursive;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#formulaire {
+    background-color: white;
+    height: 100%;
+    width: 50%;
+    font-family: 'Katibeh', cursive;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#bienvenue h2 {
+    font-size: 40px;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+#bienvenue p {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    margin: 10px;
+}
+
+#inscription {
+    font-size: 20px;
+    font-family: 'Katibeh', cursive;
+    height: 40px;
+    width: 150px;
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#inscription:hover {
+    background-color: antiquewhite;
+    transform: scale(1.1);
+}
+
+.inscription-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.option-button {
+    font-size: 20px;
+    font-family: 'Katibeh', cursive;
+    height: 40px;
+    width: 120px;
+    color: black;
+    background-color: white;
+    border: 1px solid #D36A46;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: #D36A46;
+    color: white;
+    transform: scale(1.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+.form-item {
+    font-size: 18px;
+    font-family: 'Katibeh', cursive;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+}
+
+.info {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Katibeh', cursive;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info:focus {
+    border-color: #D36A46;
+    outline: none;
+    box-shadow: 0 0 5px rgba(211, 106, 70, 0.5);
+}
+
+select.info {
+    height: 40px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.faGlobe{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.faGlobe:hover{
+    color:#D36A46;
+    transform: scale(1.1);
+}
+
+#connexion-btn, #next{
+    color: white;
+    font-size: 20px;
+    font-family: 'katibeh';
+    height: 30px;
+    width: 120px;
+    background-color: #D36A46;
+    border-radius: 40px;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+    align-content: center;
+}
+#connexion-btn:hover{
+    background-color: #C05B3A;
+}
+#msg{
+    margin: 10px;
+}
+
+#msg:hover{
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+#conn-btn{
+    background-color: #D36A46;
+    color: white;
+    font-size: 20px;
+    font-family: 'katibeh', cursive;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+#conn-btn :hover{
+    color: #C05B3A;
+}

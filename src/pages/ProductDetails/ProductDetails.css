@@ -1,0 +1,207 @@
+.product-detail{
+    font-family: 'katibeh', cursive;
+}
+.product-detail .product-detail-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .product-detail  .product-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px;
+    margin-top: 70px;
+  }
+  
+  .product-detail  .product-image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .product-detail  .placeholder-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    border-radius: 10px;
+    color: #666;
+  }
+  
+  .product-detail .product-details {
+    flex: 2;
+  }
+  
+  .product-detail  .product-details h4 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .product-detail .product-details p {
+    font-size: 16px;
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  .product-detail  .add-to-cart {
+    background-color: #D36A46;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    width: fit-content;
+    font-family: 'ketibeh', cursive;
+    font-size: 15px;
+  }
+  
+  .product-detail .add-to-cart:hover {
+    background-color: #B35639;
+  }
+  
+  .product-detail .product-vote button {
+    background-color: #D36A46;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .product-detail  .product-vote button:hover {
+    background-color: #B35639;
+  }
+  
+  .product-detail  .product-features {
+    margin-top: 20px;
+  }
+  
+  .product-detail  .product-features h5 {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .product-detail .product-features ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .product-detail  .product-features li {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .product-detail  .product-comments {
+    margin-top: 20px;
+  }
+  
+  .product-detail  .similar-products {
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  
+  .product-detail  .similar-products h5 {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .product-detail  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .product-detail  .similar-product-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    width: 180px;
+  }
+  
+  .product-detail   .similar-product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .product-detail  .similar-product-item p {
+    margin: 5px 0;
+  }
+  
+  .product-detail  .similar-product-item a {
+    color: #D36A46;
+    text-decoration: none;
+  }
+  
+  .product-detail  .zoomed {
+    transform: scale(1.5); /* Ajustez le facteur de zoom selon vos besoins */
+  }
+  
+  .product-detail .zoom-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #D36A46;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  
+  .product-detail  .hidden {
+    opacity: 0;
+  }
+  
+  .product-detail  .image-wrapper:hover .zoom-icon {
+    opacity: 1;
+  }
+
+  .product-detail #stock{
+    color: red;
+    font-size: 20px;
+    margin-top: 100px;
+  } 
+
+  .product-detail h3{
+    color: #D36A46;
+  }
+
+  .product-detail .comment-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+  
+  .product-detail .submit-comment {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #D36A46;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .product-detail .submit-comment:hover {
+    background-color: #b55e38;
+  }
+
+ 
+  
+  .product-detail .btn:hover {
+    background-color: #B35639; /* Couleur plus foncée au survol */
+  }
+  

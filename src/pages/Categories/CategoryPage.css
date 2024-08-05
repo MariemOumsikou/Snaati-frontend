@@ -1,0 +1,188 @@
+#body {
+    font-family: 'katibeh', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+#presentation {
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    height: 150px;  /* Ajustez la hauteur si nécessaire */
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+    position: relative;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments enfants horizontalement */
+}
+
+h1 {
+    position: relative;
+    font-size: 25px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+h3 {
+    position: relative;
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex; /* Utilise flexbox pour centrer le contenu */
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    margin-left: 0;
+}
+
+.input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ea8463;
+    border-radius: 25px;
+    font-size: 18px;
+    margin-left: 20px;
+    font-family: 'katibeh', cursive;
+    box-sizing: border-box; /* Assure que le padding est inclus dans la largeur */
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8E8989;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.subcategories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; 
+    justify-content: center; 
+    padding: 20px; 
+}
+
+.subcategory {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+    max-width: 150px; 
+    cursor: pointer;
+}
+
+.subcategory :hover{
+    transform: scale(1.1);
+}
+
+.subcategory-image {
+    width: 100px;
+    height: 100px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid #ddd; 
+    margin-bottom: 10px; 
+}
+
+.subcategory h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: black;
+}
+
+/* src/pages/CategoryPage.css */
+.categoryProducts {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacement entre les produits */
+  justify-content: center; /* Centre les produits horizontalement */
+}
+
+.categoryProduct {
+  background-color: #fff; 
+  border: none;
+  border-radius: 8px; /* Coins arrondis */
+  overflow: hidden;
+  width: 180px;
+  height: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative; /* Nécessaire pour le positionnement du bouton */
+  text-align: left; /* Alignement du texte à gauche */
+  padding: 10px; /* Espacement interne pour mieux organiser le contenu */
+}
+
+.categoryProduct:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée au survol */
+  transform: translateY(-5px); /* Léger déplacement vers le haut */
+}
+
+.categoryProduct-image {
+  height: 65%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.categoryProduct-details {
+  margin-top: 10px;
+}
+
+.categoryProduct-title {
+  margin: 5px 0; /* Réduction des marges autour du texte */
+  font-size: 14px; /* Taille de texte réduite */
+}
+
+.categoryProduct-description {
+  font-size: 12px; /* Taille de texte pour la description */
+  color: #666; /* Couleur de texte grise pour la description */
+}
+
+.categoryProduct-price {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espacement entre le prix et les autres éléments */
+}
+
+.more-info-btn {
+  background-color: #D36A46;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 5px; /* Positionné en bas de la carte produit */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center; /* Centrage du texte */
+  transition: background-color 0.3s ease;
+  width: calc(100% - 20px); /* Ajuster la largeur pour l'espacement */
+}
+
+.more-info-btn:hover {
+  background-color: #B35639; /* Couleur plus foncée au survol */
+}
