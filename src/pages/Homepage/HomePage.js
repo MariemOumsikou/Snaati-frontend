@@ -130,7 +130,7 @@ const HomePage = () => {
               </div>
               <h4>{product.price} MAD</h4>
               <h4>{product.title}</h4>
-              {console.log(product.id)}
+              {console.log(product._id)}
               <button className="more-info-btn" onClick={() => handleMoreInfoClick(product._id)}>Savoir Plus</button>
             </div>
           ))}

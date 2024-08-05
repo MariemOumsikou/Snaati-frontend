@@ -19,7 +19,7 @@ function CategoryPage() {
   useEffect(() => {
     const fetchSubcategories = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/categories/${categoryName}/subcategories`);
+        const response = await axios.get(`http://localhost:3000/categories/${categoryName}/subcategories`);
         setSubcategories(response.data);
       } catch (error) {
         console.error('Error fetching subcategories:', error);
