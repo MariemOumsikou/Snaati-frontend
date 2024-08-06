@@ -33,7 +33,7 @@ const InscriptionClient = () => {
         }
         
         try {
-            const response = await axios.post('http://localhost:3000/api/clients', {username: formData.username, password: formData.password, email: formData.email});
+            const response = await axios.post('https://snaati-backend.onrender.com//api/clients', {username: formData.username, password: formData.password, email: formData.email});
             console.log(response.data);
         } catch (error) {
             console.error('Erreur lors de l\'inscription:', error);

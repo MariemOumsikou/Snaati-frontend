@@ -19,7 +19,7 @@ function CategoryPage() {
   useEffect(() => {
     const fetchSubcategories = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/categories/${categoryName}/subcategories`);
+        const response = await axios.get(`https://snaati-backend.onrender.com//categories/${categoryName}/subcategories`);
         setSubcategories(response.data);
       } catch (error) {
         console.error('Error fetching subcategories:', error);
@@ -28,7 +28,7 @@ function CategoryPage() {
 
     const fetchCategoryProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/products', {
+        const response = await axios.get('https://snaati-backend.onrender.com//products', {
           params: {
             category: categoryName,
             subcategory: selectedSubcategory

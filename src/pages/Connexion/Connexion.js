@@ -34,7 +34,7 @@ const Connexion = () => {
         e.preventDefault();
 
         try {
-            const apiUrl = userType === 'artisan' ? 'http://localhost:3000/api/artisans' : 'http://localhost:3000/api/clients';
+            const apiUrl = userType === 'artisan' ? 'https://snaati-backend.onrender.com//api/artisans' : 'https://snaati-backend.onrender.com//api/clients';
             const response = await axios.post(apiUrl + '/login', {
                 username,
                 password
