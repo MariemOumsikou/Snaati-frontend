@@ -1,5 +1,5 @@
 #body {
-    font-family: 'katibeh';
+    
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -50,7 +50,7 @@
     border: 2px solid #ea8463;
     border-radius: 25px;
     font-size: 18px;
-    font-family: 'katibeh';
+    
 }
 
 #body .search-icon {

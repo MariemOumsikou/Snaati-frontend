@@ -38,7 +38,7 @@
     padding: 8px 16px;
     cursor: pointer;
     text-align: left;
-    font-family: 'katibeh';
+    
     font-size: 14px;
     width: 100%;
     color: #333;
@@ -58,14 +58,14 @@
     padding: 0;
     margin: 0;
     background-color: white;
-    font-family: 'katibeh';
+    
 }
 
 #bienvenue {
     background-color: #D36A46;
     height: 100%;
     width: 50%;
-    font-family: 'katibeh';
+    
     border-radius: 5px;
     position: absolute;
     right: 0;
@@ -79,7 +79,7 @@
     background-color: white;
     height: 100%;
     width: 50%;
-    font-family: 'katibeh';
+    
     position: absolute;
     left: 0;
     display: flex;
@@ -103,7 +103,7 @@
 
 #inscription {
     font-size: 16px; /* Réduit la taille de la police */
-    font-family: 'katibeh';
+    
     height: 30px; /* Réduit la hauteur */
     width: 120px; /* Réduit la largeur */
     color: black;
@@ -129,7 +129,7 @@
 
 .option-button {
     font-size: 16px; /* Réduit la taille de la police */
-    font-family: 'katibeh';
+    
     height: 35px; /* Réduit la hauteur */
     width: 100px; /* Réduit la largeur */
     color: black;
@@ -158,7 +158,7 @@ form {
 
 .form-item {
     font-size: 16px; /* Réduit la taille de la police */
-    font-family: 'katibeh';
+    
     color: #333;
     margin-bottom: 8px; /* Réduit la marge inférieure */
     text-align: left;
@@ -172,7 +172,7 @@ form {
     box-sizing: border-box;
     border: 1px solid #ccc; /* Réduit l'épaisseur de la bordure */
     border-radius: 4px;
-    font-family: 'katibeh';
+    
     font-size: 14px; /* Réduit la taille de la police */
     color: #333;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -203,7 +203,7 @@ select.info {
 #connexion-btn, #next {
     color: white;
     font-size: 16px; /* Réduit la taille de la police */
-    font-family: 'katibeh';
+    
     height: 25px; /* Réduit la hauteur */
     width: 100px; /* Réduit la largeur */
     background-color: #D36A46;
@@ -231,7 +231,7 @@ select.info {
     background-color: #D36A46;
     color: white;
     font-size: 16px; /* Réduit la taille de la police */
-    font-family: 'katibeh';
+    
     border: none;
     border-radius: 20px; /* Réduit les coins arrondis */
     cursor: pointer;
