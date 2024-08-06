@@ -35,7 +35,7 @@ const InscriptionArtisan = () => {
         }
         
         try {
-            const response = await axios.post('https://snaati-backend.onrender.com//api/artisans', {username: formData.username, password: formData.password, email: formData.email, phoneNumber:formData.phoneNumber, activityDescription: formData.activityDescription});
+            const response = await axios.post('https://snaati-backend.onrender.com/api/artisans', {username: formData.username, password: formData.password, email: formData.email, phoneNumber:formData.phoneNumber, activityDescription: formData.activityDescription});
             console.log(response.data);
             // Traitez la réponse comme nécessaire
         } catch (error) {

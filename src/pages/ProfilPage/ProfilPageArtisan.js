@@ -17,7 +17,7 @@ const ProfilPageArtisan = () => {
         
         const fetchArtisanId = async () => {
             try {
-                const response = await axios.get(`https://snaati-backend.onrender.com//api/artisans/id-by-username/${storedUsername}`);
+                const response = await axios.get(`https://snaati-backend.onrender.com/api/artisans/id-by-username/${storedUsername}`);
                 setArtisanId(response.data.artisanId);
                 console.log(response.data.artisanId);
             } catch (error) {
@@ -35,7 +35,7 @@ const ProfilPageArtisan = () => {
         const fetchProducts = async () => {
             if (artisanId) {
                 try {
-                    const response = await axios.get(`https://snaati-backend.onrender.com//products/artisan/${artisanId}`);
+                    const response = await axios.get(`https://snaati-backend.onrender.com/products/artisan/${artisanId}`);
                     setProducts(response.data);
                 } catch (error) {
                     console.error('Erreur lors de la récupération des produits', error);

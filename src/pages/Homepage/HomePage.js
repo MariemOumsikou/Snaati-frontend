@@ -15,7 +15,7 @@ const HomePage = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('https://snaati-backend.onrender.com//api/categories');
+      const response = await axios.get('https://snaati-backend.onrender.com/api/categories');
       return response.data;
     } catch (error) {
       console.error('Error fetching categories:', error);
@@ -25,7 +25,7 @@ const HomePage = () => {
 
   const fetchProducts = async () => {
     try {
-      const allResponse = await axios.get('https://snaati-backend.onrender.com//products');
+      const allResponse = await axios.get('https://snaati-backend.onrender.com/products');
       setAllProducts(allResponse.data); // Stocker tous les produits
     } catch (error) {
       console.error('Error fetching products:', error);

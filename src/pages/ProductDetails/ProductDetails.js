@@ -23,7 +23,7 @@ const ProductDetails = () => {
     const fetchProducts = async () => {
       try {
         // Fetch all products
-        const response = await axios.get('https://snaati-backend.onrender.com//products');
+        const response = await axios.get('https://snaati-backend.onrender.com/products');
         const products = response.data;
 
         // Find the product with the matching ID
@@ -37,7 +37,7 @@ const ProductDetails = () => {
           setSimilarProducts(similar);
 
           // Fetch product comments (if applicable)
-          // const commentsResponse = await axios.get(`https://snaati-backend.onrender.com//products/${id}/comments`);
+          // const commentsResponse = await axios.get(`https://snaati-backend.onrender.com/products/${id}/comments`);
           // setComments(commentsResponse.data);
         } else {
           setError('Product not found');
@@ -70,7 +70,7 @@ const ProductDetails = () => {
 
     try {
       // Submit the new comment (you may need to adjust the URL and payload)
-      await axios.post(`https://snaati-backend.onrender.com//products/${id}/comments`, { comment: newComment });
+      await axios.post(`https://snaati-backend.onrender.com/products/${id}/comments`, { comment: newComment });
 
       // Update the comments state
       setComments([...comments, { text: newComment, date: new Date().toISOString() }]);
