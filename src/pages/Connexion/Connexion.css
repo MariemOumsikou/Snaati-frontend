@@ -29,7 +29,7 @@
     padding: 10px 20px;
     cursor: pointer;
     text-align: left;
-    font-family: 'Katibeh', cursive;
+    font-family: 'katibeh';
     font-size: 16px;
     width: 100%;
     color: #333;
@@ -48,14 +48,14 @@
     padding: 0;
     margin: 0;
     background-color: white;
-    font-family: 'Katibeh', cursive;
+    font-family: 'katibeh';
 }
 
 #bienvenue {
     background-color: #D36A46;
     height: 100%;
     width: 50%;
-    font-family: 'Katibeh', cursive;
+    font-family: 'katibeh';
     border-radius: 5px;
     position: absolute;
     right: 0;
@@ -69,7 +69,7 @@
     background-color: white;
     height: 100%;
     width: 50%;
-    font-family: 'Katibeh', cursive;
+    font-family: 'katibeh';
     position: absolute;
     left: 0;
     display: flex;
@@ -95,7 +95,7 @@
 
 #inscription {
     font-size: 20px;
-    font-family: 'Katibeh', cursive;
+    font-family: 'katibeh';
     height: 40px;
     width: 150px;
     color: black;
@@ -121,7 +121,7 @@
 
 .option-button {
     font-size: 20px;
-    font-family: 'Katibeh', cursive;
+    font-family: 'katibeh';
     height: 40px;
     width: 120px;
     color: black;
@@ -150,7 +150,7 @@ form {
 
 .form-item {
     font-size: 18px;
-    font-family: 'Katibeh', cursive;
+    font-family: 'katibeh';
     color: #333;
     margin-bottom: 10px;
     text-align: left;
@@ -164,7 +164,7 @@ form {
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    font-family: 'Katibeh', cursive;
+    font-family: 'katibeh';
     font-size: 16px;
     color: #333;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -220,7 +220,7 @@ select.info {
     background-color: #D36A46;
     color: white;
     font-size: 20px;
-    font-family: 'katibeh', cursive;
+    font-family: 'katibeh';
     border: none;
     border-radius: 40px;
     cursor: pointer;

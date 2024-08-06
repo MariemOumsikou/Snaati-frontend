@@ -1,5 +1,5 @@
 #body {
-    font-family: 'katibeh', cursive;
+    font-family: 'katibeh';
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -54,7 +54,7 @@ h3 {
     border-radius: 25px;
     font-size: 18px;
     margin-left: 20px;
-    font-family: 'katibeh', cursive;
+    font-family: 'katibeh';
     box-sizing: border-box; /* Assure que le padding est inclus dans la largeur */
 }
 

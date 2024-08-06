@@ -1,5 +1,5 @@
 .product-detail{
-    font-family: 'katibeh', cursive;
+    font-family: 'katibeh';
 }
 .product-detail .product-detail-container {
     display: flex;
@@ -58,7 +58,7 @@
     margin-top: 10px;
     display: block;
     width: fit-content;
-    font-family: 'ketibeh', cursive;
+    font-family: 'ketibeh', ;
     font-size: 15px;
   }
   
