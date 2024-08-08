@@ -14,7 +14,7 @@ const InscriptionArtisan = () => {
         phoneNumber: '',
         activityDescription: '',
     });
-    const [error] = useState('');
+    const [error, setError] = useState('');
 
     const toggleLanguages = () => {
         setShowLanguages(!showLanguages);
@@ -25,7 +25,15 @@ const InscriptionArtisan = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-
+    const checkEmailExists = async (email) => {
+        try {
+            const response = await axios.get(`https://snaati-backend.onrender.com/api/artisans/check-email?email=${email}`);
+            return response.data.exists; // Assurez-vous que votre API renvoie { exists: true/false }
+        } catch (error) {
+            console.error('Erreur lors de la vérification de l\'email:', error);
+            return false;
+        }
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -33,11 +41,17 @@ const InscriptionArtisan = () => {
             alert("Les mots de passe ne correspondent pas.");
             return;
         }
+
+        const emailExists = await checkEmailExists(formData.email);
+        if (emailExists) {
+            setError("Cette adresse e-mail est déjà utilisée.");
+            return;
+        }
         
         try {
             const response = await axios.post('https://snaati-backend.onrender.com/api/artisans', {username: formData.username, password: formData.password, email: formData.email, phoneNumber:formData.phoneNumber, activityDescription: formData.activityDescription});
             console.log(response.data);
-            // Traitez la réponse comme nécessaire
+            window.location.href = '/connexion'; 
         } catch (error) {
             console.error('Erreur lors de l\'inscription:', error);
         }

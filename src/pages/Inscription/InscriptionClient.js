@@ -4,7 +4,6 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import './Inscription.css';
 import axios from 'axios';
 
-
 const InscriptionClient = () => {
     const [showLanguages, setShowLanguages] = useState(false);
     const [formData, setFormData] = useState({
@@ -24,6 +23,16 @@ const InscriptionClient = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const checkEmailExists = async (email) => {
+        try {
+            const response = await axios.get(`https://snaati-backend.onrender.com/api/clients/check-email?email=${email}`);
+            return response.data.exists; // Assurez-vous que votre API renvoie { exists: true/false }
+        } catch (error) {
+            console.error('Erreur lors de la vérification de l\'email:', error);
+            return false;
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -31,15 +40,26 @@ const InscriptionClient = () => {
             alert("Les mots de passe ne correspondent pas.");
             return;
         }
-        
+
+        const emailExists = await checkEmailExists(formData.email);
+        if (emailExists) {
+            setError("Cette adresse e-mail est déjà utilisée.");
+            return;
+        }
+
         try {
-            const response = await axios.post('https://snaati-backend.onrender.com/api/clients', {username: formData.username, password: formData.password, email: formData.email});
+            const response = await axios.post('https://snaati-backend.onrender.com/api/clients', {
+                username: formData.username,
+                password: formData.password,
+                email: formData.email
+            });
             console.log(response.data);
+            window.location.href = '/connexion'; 
+            // Traitez la réponse comme nécessaire
         } catch (error) {
             console.error('Erreur lors de l\'inscription:', error);
         }
     };
-    
 
     return (
         <div id="inscription-client">

@@ -19,7 +19,8 @@ function CategoryPage() {
   useEffect(() => {
     const fetchSubcategories = async () => {
       try {
-        const response = await axios.get(`https://snaati-backend.onrender.com/categories/${categoryName}/subcategories`);
+
+        const response = await axios.get(`https://snaati-backend.onrender.com/api/categories/${categoryName}/subcategories`);
         setSubcategories(response.data);
       } catch (error) {
         console.error('Error fetching subcategories:', error);
