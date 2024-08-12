@@ -22,7 +22,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/products');
+        const response = await axios.get('https://snaati-backend.onrender.com/products');
         const products = response.data;
         const product = products.find(p => p._id === id);
 
@@ -61,7 +61,7 @@ const ProductDetails = () => {
     if (!newComment.trim()) return;
 
     try {
-      await axios.post(`http://localhost:3000/products/${id}/comments`, { comment: newComment });
+      await axios.post(`https://snaati-backend.onrender.com/products/${id}/comments`, { comment: newComment });
       setComments([...comments, { text: newComment, date: new Date().toISOString() }]);
       setNewComment('');
     } catch (error) {
