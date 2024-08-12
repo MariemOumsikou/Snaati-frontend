@@ -48,3 +48,20 @@ nav {
     transform: scale(1.1);
     color: #D36A46;
 }
+/* Header.css */
+.cart-icon-container {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #D36A46;
+    color: white;
+    border-radius: 50%;
+    padding: 1px 4px;
+    font-size: 12px;
+    font-weight: bold;
+}

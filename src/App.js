@@ -8,22 +8,29 @@ import CategoryPage from './pages/Categories/CategoryPage';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import ProfilPageArtisan from './pages/ProfilPage/ProfilPageArtisan';
 import ProfilPageClient from './pages/ProfilPage/ProfilPageClient';
+import SubcategoryPage from './pages/Categories/SubcategoryPage';
+import { CartProvider } from './context/CartContext';
+import CartPage from './pages/ProductDetails/CartPage'
 
 function App() {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<HomePage />} /> 
-                <Route path="/Connexion" element={<Connexion />} />
-                <Route path="/Inscription/InscriptionArtisan" element={<InscriptionArtisan />} />
-                <Route path="/Inscription/InscriptionClient" element={<InscriptionClient />} />
-                <Route path="/Categories/:categoryName" element={<CategoryPage />} />
-                <Route path="/product/:id" element={<ProductDetails />} />
-                <Route path="/ProfilPage/ProfilPageArtisan" element={<ProfilPageArtisan />} />
-                <Route path="/ProfilPage/ProfilPageClient" element={<ProfilPageClient />} />
-            </Routes>
-        </Router>
-    );
+  return (
+    <Router>
+      <CartProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} /> 
+          <Route path="/Connexion" element={<Connexion />} />
+          <Route path="/Inscription/InscriptionArtisan" element={<InscriptionArtisan />} />
+          <Route path="/Inscription/InscriptionClient" element={<InscriptionClient />} />
+          <Route path="/Categories/:categoryName" element={<CategoryPage />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/ProfilPage/ProfilPageArtisan" element={<ProfilPageArtisan />} />
+          <Route path="/ProfilPage/ProfilPageClient" element={<ProfilPageClient />} />
+          <Route path="/Categories/:categoryName/subcategory/:subcategoryName" element={<SubcategoryPage />} />
+          <Route path="/cart" element={<CartPage />} />        
+        </Routes>
+      </CartProvider>
+    </Router>
+  );
 }
 
 export default App;

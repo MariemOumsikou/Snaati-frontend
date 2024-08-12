@@ -1,12 +1,11 @@
-// src/pages/CategoryPage.js
-import { useParams , useNavigate} from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from 'axios';  // Importer axios
+import axios from 'axios';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import './CategoryPage.css';  // Importez le fichier CSS
+import './CategoryPage.css';
 
 function CategoryPage() {
   const { categoryName } = useParams();
@@ -15,12 +14,10 @@ function CategoryPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSubcategory, setSelectedSubcategory] = useState('');
 
-  // Fetch subcategories and category products when categoryName or selectedSubcategory changes
   useEffect(() => {
     const fetchSubcategories = async () => {
       try {
-
-        const response = await axios.get(`https://snaati-backend.onrender.com/api/categories/${categoryName}/subcategories`);
+        const response = await axios.get(`http://localhost:3000/api/categories/${categoryName}/subcategories`);
         setSubcategories(response.data);
       } catch (error) {
         console.error('Error fetching subcategories:', error);
@@ -29,7 +26,7 @@ function CategoryPage() {
 
     const fetchCategoryProducts = async () => {
       try {
-        const response = await axios.get('https://snaati-backend.onrender.com/products', {
+        const response = await axios.get('http://localhost:3000/products', {
           params: {
             category: categoryName,
             subcategory: selectedSubcategory
@@ -45,21 +42,15 @@ function CategoryPage() {
     fetchCategoryProducts();
   }, [categoryName, selectedSubcategory]);
 
-  // Filtrage des produits
   const filteredProducts = categoryProducts.filter(product => {
     const searchQueryLower = searchQuery.toLowerCase();
-
-    // Vérifier si le titre du produit contient la requête de recherche
     const titleMatch = product.title.toLowerCase().includes(searchQueryLower);
-
-    // Vérifier si le produit correspond à la catégorie ou à une sous-catégorie
     const categoryOrSubcategoryMatch = (
       product.category.toLowerCase() === categoryName.toLowerCase() ||
       subcategories.some(subcategory => 
         product.category.toLowerCase() === subcategory.name.toLowerCase()
       )
     );
-
     return titleMatch && categoryOrSubcategoryMatch;
   });
 
@@ -67,6 +58,10 @@ function CategoryPage() {
 
   const handleMoreInfo = (productId) => {
     navigate(`/product/${productId}`);
+  };
+
+  const handleSubcategoryClick = (subcategoryName) => {
+    navigate(`/Categories/${categoryName}/subcategory/${subcategoryName}`);
   };
 
   return (
@@ -100,7 +95,7 @@ function CategoryPage() {
           <div 
             key={subcategory.name} 
             className={`subcategory ${selectedSubcategory === subcategory.name ? 'active' : ''}`}
-            onClick={() => setSelectedSubcategory(subcategory.name)}
+            onClick={() => handleSubcategoryClick(subcategory.name)}
           >
             {subcategory.imageUrl ? (
               <img src={subcategory.imageUrl} alt={subcategory.name} className="subcategory-image" />
