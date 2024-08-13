@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCart } from '../../context/CartContext'; // Ensure the path is correct
+import { useCart } from '../../context/CartContext'; // Assurez-vous que ce chemin est correct
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import './CartPage.css';
@@ -7,8 +7,8 @@ import './CartPage.css';
 const CartPage = () => {
     const { cart } = useCart();
 
-    // Calculate total price
-    const totalPrice = cart.reduce((total, product) => total + product.price, 0);
+    // Calculer le prix total
+    const totalPrice = cart.reduce((total, product) => total + product.price * product.quantity, 0);
 
     return (
         <div className="cart-page">
@@ -35,9 +35,9 @@ const CartPage = () => {
                                             <img src={product.imageURL} alt={product.title} className="cart-product-image" />
                                             <span>{product.title}</span>
                                         </td>
-                                        <td>1</td> {/* Assuming quantity is 1 for simplicity */}
+                                        <td>{product.quantity}</td>
                                         <td>{product.price} MAD</td>
-                                        <td>{product.price} MAD</td> {/* Total is same as unit price here */}
+                                        <td>{product.price * product.quantity} MAD</td> {/* Total du produit */}
                                     </tr>
                                 ))}
                                 <tr className="total-row">

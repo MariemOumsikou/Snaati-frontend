@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { useCart } from '../../context/CartContext'; // Assurez-vous que ce chemin est correct
 import './ProductDetails.css';
+import { useAuth } from '../../context/AuthContext';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -15,9 +16,11 @@ const ProductDetails = () => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [newComment, setNewComment] = useState('');
   const [comments, setComments] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
   const { addToCart } = useCart(); // Utilisation du contexte du panier
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -60,8 +63,18 @@ const ProductDetails = () => {
     event.preventDefault();
     if (!newComment.trim()) return;
 
+    if (!user) {
+      alert('Vous devez être connecté pour laisser un commentaire.');
+      navigate('/Connexion')
+      return;
+    }
+
     try {
-      await axios.post(`https://snaati-backend.onrender.com/products/${id}/comments`, { comment: newComment });
+      await axios.post(`https://snaati-backend.onrender.com/products/${id}/comments`,  {
+        productId: id,
+        clientId: user._id,  // Ensure this is the correct field name for clientId
+        text: newComment
+      });
       setComments([...comments, { text: newComment, date: new Date().toISOString() }]);
       setNewComment('');
     } catch (error) {
@@ -69,11 +82,17 @@ const ProductDetails = () => {
       setError('Failed to submit comment. Please try again later.');
     }
   };
+  
 
   const handleAddToCart = () => {
     if (productinfos) {
-      addToCart(productinfos);
+      addToCart({ ...productinfos, quantity });
     }
+  };
+
+  const handleQuantityChange = (e) => {
+    const newQuantity = parseInt(e.target.value, 10);
+    setQuantity(newQuantity);
   };
 
   if (loading) return <p>Loading...</p>;
@@ -102,14 +121,22 @@ const ProductDetails = () => {
             <p id="stock">Il n'en reste que {productinfos.stock}</p>
             <h4>{productinfos.title}</h4>
             <p>{productinfos.description}</p>
-            <h3>Price: {productinfos.price} MAD</h3>
+            <h3>Prix: {productinfos.price} MAD</h3>
+            <label htmlFor="quantity">Quantité:</label>
+            <input
+              type="number"
+              id="quantity"
+              min="1"
+              value={quantity}
+              onChange={handleQuantityChange}
+            />
             <button className="add-to-cart" onClick={handleAddToCart}>Ajouter dans le panier</button>
             <h5>Laissez-nous un commentaire</h5>
             <form onSubmit={handleCommentSubmit}>
               <textarea
                 value={newComment}
                 onChange={handleCommentChange}
-                placeholder="Write your comment here..."
+                placeholder="Écrivez votre commentaire ici..."
                 rows="4"
                 cols="50"
                 className="comment-textarea"
@@ -119,7 +146,7 @@ const ProductDetails = () => {
           </div>
         </div>
         <div className="product-comments">
-          <h5>Nombre d'avis</h5>
+          <h5>Commentaires</h5>
           <ul className="comments-list">
             {comments.map((comment, index) => (
               <li key={index} className="comment-item">
@@ -130,7 +157,7 @@ const ProductDetails = () => {
           </ul>
         </div>
         <div className="similar-products">
-          <h5>Produits de la même catégorie</h5>
+          <h5>Produits similaires</h5>
           <div className="product-list">
             {similarProducts.map(product => (
               <div key={product._id} className="similar-product-item">

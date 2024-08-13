@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from '../context/CartContext'; // Ensure the path is correct
+import { useCart } from '../context/CartContext'; // Assurez-vous que ce chemin est correct
 import './Header.css';
 
 const Header = () => {
@@ -17,6 +17,9 @@ const Header = () => {
         navigate("/Connexion");
     };
 
+    // Calculer la quantité totale dans le panier
+    const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+
     return (
         <div id="header">
             <nav>
@@ -27,8 +30,8 @@ const Header = () => {
                     <li className="item" onClick={navigateToCart}>
                         <div className="cart-icon-container">
                             <FontAwesomeIcon icon={faShoppingCart} />
-                            {cart.length > 0 && (
-                                <span className="cart-badge">{cart.length}</span>
+                            {totalQuantity > 0 && (
+                                <span className="cart-badge">{totalQuantity}</span>
                             )}
                         </div>
                     </li>

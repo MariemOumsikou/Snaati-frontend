@@ -10,7 +10,8 @@ import ProfilPageArtisan from './pages/ProfilPage/ProfilPageArtisan';
 import ProfilPageClient from './pages/ProfilPage/ProfilPageClient';
 import SubcategoryPage from './pages/Categories/SubcategoryPage';
 import { CartProvider } from './context/CartContext';
-import CartPage from './pages/ProductDetails/CartPage'
+import CartPage from './pages/ProductDetails/CartPage';
+import SearchResults from './pages/SearchResults/SearchResults';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/ProfilPage/ProfilPageClient" element={<ProfilPageClient />} />
           <Route path="/Categories/:categoryName/subcategory/:subcategoryName" element={<SubcategoryPage />} />
           <Route path="/cart" element={<CartPage />} />        
+          <Route path="/search" element={<SearchResults />} />
         </Routes>
       </CartProvider>
     </Router>

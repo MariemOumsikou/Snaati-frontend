@@ -226,3 +226,26 @@
   }
 
   
+  .suggestions-container {
+    position: absolute;
+    top: 100%; /* Aligne les suggestions directement sous la barre de recherche */
+    left: 0;
+    width: 100%;
+    max-height: 200px; /* Limite la hauteur maximale */
+    overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
+    background-color: #fff; /* Fond blanc pour la liste des suggestions */
+    border: 1px solid #ddd; /* Bordure légère pour la liste des suggestions */
+    border-radius: 4px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner de la profondeur */
+    z-index: 1000; /* Assure que la liste des suggestions est au-dessus des autres éléments */
+  }
+  
+  .suggestion-item {
+    padding: 10px; /* Espacement intérieur pour chaque élément de suggestion */
+    cursor: pointer; /* Curseur pointer pour indiquer que c'est cliquable */
+    transition: background-color 0.3s; /* Transition douce pour les effets de survol */
+  }
+  
+  .suggestion-item:hover {
+    background-color: #f0f0f0; /* Changement de fond au survol */
+  }

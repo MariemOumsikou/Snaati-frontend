@@ -1,4 +1,3 @@
-// HomePage.js
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faSearch, faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -9,9 +8,9 @@ import './HomePage.css';
 
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
-  const [newProducts, setNewProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
-  const [currentProductIndex, setCurrentProductIndex] = useState(0);
+  const [searchTerm, setSearchTerm] = useState(''); // État pour le terme de recherche
+  const [suggestions, setSuggestions] = useState([]); // État pour les suggestions
 
   const fetchCategories = async () => {
     try {
@@ -42,41 +41,36 @@ const HomePage = () => {
     loadCategoriesAndProducts();
   }, []);
 
-  const handleNextProduct = () => {
-    setCurrentProductIndex((prevIndex) => (prevIndex + 5) % newProducts.length);
-  };
-
-  const handlePrevProduct = () => {
-    setCurrentProductIndex((prevIndex) => (prevIndex - 5 + newProducts.length) % newProducts.length);
-  };
-
   useEffect(() => {
-    const interval = setInterval(() => {
-      handleNextProduct();
-    }, 8000);
-    return () => clearInterval(interval);
-  }, [newProducts]);
+    if (searchTerm.trim() === '') {
+      setSuggestions([]);
+      return;
+    }
+
+    const filteredSuggestions = allProducts
+      .filter(product => product.title.toLowerCase().includes(searchTerm.toLowerCase()))
+      .map(product => product.title);
+    
+    setSuggestions(filteredSuggestions);
+  }, [searchTerm, allProducts]);
 
   const navigate = useNavigate();
 
-  const navigateToSignIn = () => {
-    navigate("../Connexion");
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
   };
 
-  const handleScrollToFooter = () => {
-    const footerElement = document.getElementById('Footer');
-    if (footerElement) {
-      footerElement.scrollIntoView({ behavior: 'smooth' });
+  const handleSuggestionClick = (suggestion) => {
+    setSearchTerm(suggestion);
+    navigate(`/search?query=${encodeURIComponent(suggestion)}`);
+    setSuggestions([]);
+  };
+
+  const handleSearchSubmit = (event) => {
+    if (event.key === 'Enter' || event.type === 'click') {
+      navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
+      setSuggestions([]);
     }
-  };
-
-  const handleCategoryClick = (type) => {
-    navigate(`../Categories/${type}`);
-  };
-
-  // Fonction pour rediriger vers la page de détails du produit
-  const handleMoreInfoClick = (productId) => {
-    navigate(`../product/${productId}`);
   };
 
   return (
@@ -85,8 +79,8 @@ const HomePage = () => {
         <nav>
           <span id="logo">Snaati</span>
           <ul className="list-item">
-            <li className="item" onClick={navigateToSignIn}>Se connecter</li>
-            <li className="item" onClick={handleScrollToFooter}>Contact</li>
+            <li className="item" onClick={() => navigate("/Connexion")}>Se connecter</li>
+            <li className="item" onClick={() => document.getElementById('Footer').scrollIntoView({ behavior: 'smooth' })}>Contact</li>
             <li className="item">
               <FontAwesomeIcon icon={faShoppingCart} />
             </li>
@@ -104,15 +98,39 @@ const HomePage = () => {
           <h1>Snaati, l'Artisanat Authentique à Portée de Main</h1>
           <h3>Bienvenue sur notre plateforme dédiée aux artisans passionnés et aux amateurs de produits uniques !</h3>
           <div className="search-container">
-            <input type="text" className="input" placeholder="Chercher un produit..." />
-            <FontAwesomeIcon icon={faSearch} className="search-icon" />
+            <input
+              type="text"
+              className="input"
+              placeholder="Chercher un produit..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              onKeyDown={handleSearchSubmit} // Détecter la touche Entrée
+            />
+            <FontAwesomeIcon
+              icon={faSearch}
+              className="search-icon"
+              onClick={handleSearchSubmit} // Déclencher la recherche au clic
+            />
+            {suggestions.length > 0 && (
+              <div className="suggestions-container">
+                {suggestions.map((suggestion, index) => (
+                  <div
+                    key={index}
+                    className="suggestion-item"
+                    onClick={() => handleSuggestionClick(suggestion)}
+                  >
+                    {suggestion}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
       <h2 className="section-title category-title">Catégories</h2>
       <div className="categories">
         {categories.map(category => (
-          <div key={category.id} className="category" onClick={() => handleCategoryClick(category.name)}>
+          <div key={category.id} className="category" onClick={() => navigate(`/Categories/${category.name}`)}>
             <img src={category.imageUrl} alt={category.name} className="category-image" />
             <h4>{category.name}</h4>
           </div>
@@ -123,15 +141,14 @@ const HomePage = () => {
         <h2 className="section-title">Tous les Produits</h2>
         <div className="products">
           {allProducts.map(product => (
-            <div key={product.id} className="product">
+            <div key={product._id} className="product">
               <div className="product-image-container">
                 <img src={product.imageURL} alt={product.title} className="product-image" />
-                  <FontAwesomeIcon icon={faHeart} className="product-like-icon" />
+                <FontAwesomeIcon icon={faHeart} className="product-like-icon" />
               </div>
               <h4>{product.price} MAD</h4>
               <h4>{product.title}</h4>
-              {console.log(product._id)}
-              <button className="more-info-btn" onClick={() => handleMoreInfoClick(product._id)}>Savoir Plus</button>
+              <button className="more-info-btn" onClick={() => navigate(`/product/${product._id}`)}>Savoir Plus</button>
             </div>
           ))}
         </div>
