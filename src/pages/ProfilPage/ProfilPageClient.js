@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import ProfilHeaderC from "../../components/ProfilHeaderC";
+import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 const ProfilPageClient=()=>{
@@ -10,7 +10,7 @@ const ProfilPageClient=()=>{
         setUsername(storedUsername || 'username');})
     return(
         <div className="ProfilPage">
-            <ProfilHeaderC />
+            <Header />
             <h1 className="Bienvenue">Bienvenue {username},</h1>
             <div className="section">
                 <h1>Historique des Achats</h1>

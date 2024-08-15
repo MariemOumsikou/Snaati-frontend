@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProfilHeader from "../../components/ProfilHeaderA";
+import Header from "../../components/Header";
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +17,7 @@ const ProfilPageArtisan = () => {
         
         const fetchArtisanId = async () => {
             try {
-                const response = await axios.get(`https://snaati-backend.onrender.com/api/artisans/id-by-username/${storedUsername}`);
+                const response = await axios.get(`http://localhost:3000/api/artisans/id-by-username/${storedUsername}`);
                 setArtisanId(response.data.artisanId);
                 console.log(response.data.artisanId);
             } catch (error) {
@@ -35,7 +35,7 @@ const ProfilPageArtisan = () => {
         const fetchProducts = async () => {
             if (artisanId) {
                 try {
-                    const response = await axios.get(`https://snaati-backend.onrender.com/products/artisan/${artisanId}`);
+                    const response = await axios.get(`http://localhost:3000/products/artisan/${artisanId}`);
                     setProducts(response.data);
                 } catch (error) {
                     console.error('Erreur lors de la récupération des produits', error);
@@ -49,7 +49,7 @@ const ProfilPageArtisan = () => {
 
     return (
         <div className="ProfilPage">
-            <ProfilHeader />
+            <Header />
             <h1 className="Bienvenue">Bienvenue {username},</h1>
             <div className="Commandes">
                 <h2 className="section-title">Commandes</h2>

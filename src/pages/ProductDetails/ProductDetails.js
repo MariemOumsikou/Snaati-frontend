@@ -3,9 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { useCart } from '../../context/CartContext'; // Assurez-vous que ce chemin est correct
+import { useCart } from '../../context/CartContext';
 import './ProductDetails.css';
-import { useAuth } from '../../context/AuthContext';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -15,36 +14,37 @@ const ProductDetails = () => {
   const [error, setError] = useState(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [newComment, setNewComment] = useState('');
+  const [email, setEmail] = useState('');
   const [comments, setComments] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const [commentError, setCommentError] = useState('');
 
-  const { addToCart } = useCart(); // Utilisation du contexte du panier
+  const { addToCart } = useCart();
   const navigate = useNavigate();
-  const { user } = useAuth();
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProductDetails = async () => {
       try {
-        const response = await axios.get('https://snaati-backend.onrender.com/products');
-        const products = response.data;
-        const product = products.find(p => p._id === id);
+        const productResponse = await axios.get(`http://localhost:3000/products/${id}`);
+        const product = productResponse.data;
+        setProduct(product);
 
-        if (product) {
-          setProduct(product);
-          const similar = products.filter(p => p.category === product.category && p._id !== id);
-          setSimilarProducts(similar);
-        } else {
-          setError('Product not found');
-        }
+        const similarResponse = await axios.get('http://localhost:3000/products');
+        const products = similarResponse.data;
+        const similar = products.filter(p => p.category === product.category && p._id !== id);
+        setSimilarProducts(similar);
+
+        const commentsResponse = await axios.get(`http://localhost:3000/comments?productId=${id}`);
+        setComments(commentsResponse.data);
       } catch (error) {
-        console.error('Failed to fetch products:', error);
+        console.error('Failed to fetch product details or comments:', error);
         setError('Failed to load product details. Please try again later.');
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProducts();
+    fetchProductDetails();
   }, [id]);
 
   const handleImageZoom = () => {
@@ -55,34 +55,13 @@ const ProductDetails = () => {
     setNewComment(event.target.value);
   };
 
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
   const handleMoreInfo = (productId) => {
     navigate(`/product/${productId}`);
   };
-
-  const handleCommentSubmit = async (event) => {
-    event.preventDefault();
-    if (!newComment.trim()) return;
-
-    if (!user) {
-      alert('Vous devez être connecté pour laisser un commentaire.');
-      navigate('/Connexion')
-      return;
-    }
-
-    try {
-      await axios.post(`https://snaati-backend.onrender.com/products/${id}/comments`,  {
-        productId: id,
-        clientId: user._id,  // Ensure this is the correct field name for clientId
-        text: newComment
-      });
-      setComments([...comments, { text: newComment, date: new Date().toISOString() }]);
-      setNewComment('');
-    } catch (error) {
-      console.error('Failed to submit comment:', error);
-      setError('Failed to submit comment. Please try again later.');
-    }
-  };
-  
 
   const handleAddToCart = () => {
     if (productinfos) {
@@ -95,9 +74,40 @@ const ProductDetails = () => {
     setQuantity(newQuantity);
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-  if (!productinfos) return <p>Product not found</p>;
+  const handleSubmitComment = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.get(`http://localhost:3000/api/clients?email=${email}`);
+
+      if (response.data.length > 0) {
+        // Email trouvé, ajoutez le commentaire
+        await axios.post('http://localhost:3000/comments', {
+          productId: id,
+          clientEmail: email,
+          text: newComment,
+          date: new Date(),
+        });
+        setComments([...comments, { text: newComment, date: new Date() }]);
+        setNewComment('');
+        setEmail('');
+        setCommentError('');
+      } else {
+        // Email non trouvé
+        setCommentError('Veuillez vous connecter pour laisser un commentaire.');
+      }
+    } catch (error) {
+      console.error('Failed to submit comment:', error);
+      setCommentError('Failed to submit comment. Please try again later.');
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="product-detail">
@@ -114,11 +124,11 @@ const ProductDetails = () => {
                 />
               </div>
             ) : (
-              <div className="placeholder-image">Image non disponible</div>
+              <div className="placeholder-image">Image not available</div>
             )}
           </div>
           <div className="product-details">
-            <p id="stock">Il n'en reste que {productinfos.stock}</p>
+            <p id="stock">Il ne reste que {productinfos.stock} en stock stock</p>
             <h4>{productinfos.title}</h4>
             <p>{productinfos.description}</p>
             <h3>Prix: {productinfos.price} MAD</h3>
@@ -130,23 +140,37 @@ const ProductDetails = () => {
               value={quantity}
               onChange={handleQuantityChange}
             />
-            <button className="add-to-cart" onClick={handleAddToCart}>Ajouter dans le panier</button>
-            <h5>Laissez-nous un commentaire</h5>
-            <form onSubmit={handleCommentSubmit}>
+            <button className="add-to-cart" onClick={handleAddToCart}>
+              Ajouter dans le pannier
+            </button>
+            <h5>Laissez nous un commentaire</h5>
+            <form onSubmit={handleSubmitComment}>
+              <input
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                placeholder="Donnez votre mail pour enregistrer votre commentaire"
+                className="comment-email"
+                required
+              />
               <textarea
                 value={newComment}
                 onChange={handleCommentChange}
-                placeholder="Écrivez votre commentaire ici..."
+                placeholder="Ecrivez votre commentaire içi..."
                 rows="4"
                 cols="50"
                 className="comment-textarea"
+                required
               />
-              <button type="submit" className="submit-comment">Envoyer</button>
+              <button type="submit" className="submit-comment">
+                Submit
+              </button>
+              {commentError && <p className="error-message">{commentError}</p>}
             </form>
           </div>
         </div>
         <div className="product-comments">
-          <h5>Commentaires</h5>
+          <h5>Ce qu'ils disent sur le Produit</h5>
           <ul className="comments-list">
             {comments.map((comment, index) => (
               <li key={index} className="comment-item">
@@ -157,14 +181,16 @@ const ProductDetails = () => {
           </ul>
         </div>
         <div className="similar-products">
-          <h5>Produits similaires</h5>
+          <h5>Produits Similaires</h5>
           <div className="product-list">
             {similarProducts.map(product => (
               <div key={product._id} className="similar-product-item">
                 <img src={product.imageURL} alt={product.title} />
                 <p>{product.title}</p>
                 <p>{product.price} MAD</p>
-                <button className="btn" onClick={() => handleMoreInfo(product._id)}>Savoir Plus</button>
+                <button className="btn" onClick={() => handleMoreInfo(product._id)}>
+                  En savoir plus
+                </button>
               </div>
             ))}
           </div>

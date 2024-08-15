@@ -25,7 +25,7 @@ const InscriptionClient = () => {
 
     const checkEmailExists = async (email) => {
         try {
-            const response = await axios.get(`https://snaati-backend.onrender.com/api/clients/check-email?email=${email}`);
+            const response = await axios.get(`http://localhost:3000/api/clients/check-email?email=${email}`);
             return response.data.exists; // Assurez-vous que votre API renvoie { exists: true/false }
         } catch (error) {
             console.error('Erreur lors de la vérification de l\'email:', error);
@@ -48,7 +48,7 @@ const InscriptionClient = () => {
         }
 
         try {
-            const response = await axios.post('https://snaati-backend.onrender.com/api/clients', {
+            const response = await axios.post('http://localhost:3000/api/clients', {
                 username: formData.username,
                 password: formData.password,
                 email: formData.email
