@@ -25,16 +25,16 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const productResponse = await axios.get(`http://localhost:3000/products/${id}`);
+        const productResponse = await axios.get(`https://snaati-backend.onrender.com/products/${id}`);
         const product = productResponse.data;
         setProduct(product);
 
-        const similarResponse = await axios.get('http://localhost:3000/products');
+        const similarResponse = await axios.get('https://snaati-backend.onrender.com/products');
         const products = similarResponse.data;
         const similar = products.filter(p => p.category === product.category && p._id !== id);
         setSimilarProducts(similar);
 
-        const commentsResponse = await axios.get(`http://localhost:3000/comments?productId=${id}`);
+        const commentsResponse = await axios.get(`https://snaati-backend.onrender.com/comments?productId=${id}`);
         setComments(commentsResponse.data);
       } catch (error) {
         console.error('Failed to fetch product details or comments:', error);
@@ -77,11 +77,11 @@ const ProductDetails = () => {
   const handleSubmitComment = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:3000/api/clients?email=${email}`);
+      const response = await axios.get(`https://snaati-backend.onrender.com/api/clients?email=${email}`);
 
       if (response.data.length > 0) {
         // Email trouvé, ajoutez le commentaire
-        await axios.post('http://localhost:3000/comments', {
+        await axios.post('https://snaati-backend.onrender.com/comments', {
           productId: id,
           clientEmail: email,
           text: newComment,
