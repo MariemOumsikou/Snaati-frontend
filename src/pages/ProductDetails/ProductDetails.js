@@ -163,7 +163,7 @@ const ProductDetails = () => {
                 required
               />
               <button type="submit" className="submit-comment">
-                Submit
+                Envoyer
               </button>
               {commentError && <p className="error-message">{commentError}</p>}
             </form>
