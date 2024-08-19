@@ -22,7 +22,7 @@ const CheckoutPage = () => {
         e.preventDefault();
     
         try {
-            const clientResponse = await axios.get('http://localhost:3000/api/clients', { params: { email } });
+            const clientResponse = await axios.get('https://snaati-backend.onrender.com/api/clients', { params: { email } });
             const clientData = clientResponse.data;
     
             if (!clientData || clientData.length === 0) {
@@ -56,7 +56,7 @@ const CheckoutPage = () => {
             });
     
             // Enregistrer la commande
-            await axios.post('http://localhost:3000/orders', {
+            await axios.post('https://snaati-backend.onrender.com/orders', {
                 clientId,
                 products, // Envoie la liste des produits
                 totalAmount: totalPrice,
