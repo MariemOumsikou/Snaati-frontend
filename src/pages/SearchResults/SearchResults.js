@@ -24,7 +24,7 @@ const SearchResults = () => {
 
   const fetchProducts = async (query) => {
     try {
-      const response = await axios.get('https://snaati-backend.onrender.com/products');
+      const response = await axios.get('http://localhost:3000/products');
       setAllProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);

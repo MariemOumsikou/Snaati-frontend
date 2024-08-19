@@ -27,7 +27,7 @@ const InscriptionArtisan = () => {
 
     const checkEmailExists = async (email) => {
         try {
-            const response = await axios.get(`https://snaati-backend.onrender.com/api/artisans/check-email?email=${email}`);
+            const response = await axios.get(`http://localhost:3000/api/artisans/check-email?email=${email}`);
             return response.data.exists; // Assurez-vous que votre API renvoie { exists: true/false }
         } catch (error) {
             console.error('Erreur lors de la vérification de l\'email:', error);
@@ -49,7 +49,7 @@ const InscriptionArtisan = () => {
         }
         
         try {
-            const response = await axios.post('https://snaati-backend.onrender.com/api/artisans', {username: formData.username, password: formData.password, email: formData.email, phoneNumber:formData.phoneNumber, activityDescription: formData.activityDescription});
+            const response = await axios.post('http://localhost:3000/api/artisans', {username: formData.username, password: formData.password, email: formData.email, phoneNumber:formData.phoneNumber, activityDescription: formData.activityDescription});
             console.log(response.data);
             window.location.href = '/connexion'; 
         } catch (error) {

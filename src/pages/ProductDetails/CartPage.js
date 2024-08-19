@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext'; // Assurez-vous que ce chemin est correct
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -6,9 +7,14 @@ import './CartPage.css';
 
 const CartPage = () => {
     const { cart } = useCart();
+    const navigate = useNavigate();
 
     // Calculer le prix total
     const totalPrice = cart.reduce((total, product) => total + product.price * product.quantity, 0);
+
+    const handleContinueShopping = () => {
+        navigate('/checkout');
+    };
 
     return (
         <div className="cart-page">
@@ -46,7 +52,7 @@ const CartPage = () => {
                                 </tr>
                             </tbody>
                         </table>
-                        <button className="continue-shopping" onClick={() => window.location.href = '/checkout'}>
+                        <button className="continue-shopping" onClick={handleContinueShopping}>
                             Continuer l'achat
                         </button>
                     </div>

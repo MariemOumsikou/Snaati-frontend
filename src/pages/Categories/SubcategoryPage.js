@@ -17,7 +17,7 @@ function SubcategoryPage() {
 
   const fetchCategoryProducts = useCallback(async () => {
     try {
-      const response = await axios.get(`https://snaati-backend.onrender.com/products/subcategory/${subcategoryName}`);
+      const response = await axios.get(`http://localhost:3000/products/subcategory/${subcategoryName}`);
       if (response.status === 200) {
         setCategoryProducts(response.data);
       } else {

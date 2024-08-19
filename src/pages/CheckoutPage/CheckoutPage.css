@@ -1,0 +1,51 @@
+.checkout-page {
+    padding: 20px;
+}
+
+.checkout-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.order-summary, .checkout-form {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.order-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-summary-table th, .order-summary-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.total-row td {
+    font-weight: bold;
+}
+
+.checkout-form label {
+    display: block;
+    margin: 10px 0;
+}
+
+.checkout-form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.place-order-button {
+    padding: 10px 20px;
+    background-color: #D36A46;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}

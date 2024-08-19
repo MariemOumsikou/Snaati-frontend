@@ -12,6 +12,7 @@ import SubcategoryPage from './pages/Categories/SubcategoryPage';
 import { CartProvider } from './context/CartContext';
 import CartPage from './pages/ProductDetails/CartPage';
 import SearchResults from './pages/SearchResults/SearchResults';
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage'; 
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/Categories/:categoryName/subcategory/:subcategoryName" element={<SubcategoryPage />} />
           <Route path="/cart" element={<CartPage />} />        
           <Route path="/search" element={<SearchResults />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </CartProvider>
     </Router>
